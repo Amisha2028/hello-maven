@@ -5,7 +5,14 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
+
 - task: Maven@4
   inputs:
     mavenPomFile: 'pom.xml'
     goals: 'package'
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'target'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
